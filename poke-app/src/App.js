@@ -116,6 +116,7 @@ function App() {
           nickname: data[item].nickname,
           addTime: data[item].addTime,
           id: item,
+          editTime: data[item].editTime,
         });
       }
 
@@ -149,6 +150,7 @@ function App() {
             nickname: (nickname = null),
             addTime: dateTime,
             id: Math.random(),
+            editTime: null,
           }),
         }
       );
@@ -183,7 +185,7 @@ function App() {
   };
 
   const onDeleteFavoriteHandler = async (id) => {
-    console.log(id)
+    console.log(id);
     try {
       let response = await fetch(
         `https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon/${id}/.json`,
@@ -201,6 +203,47 @@ function App() {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const onEditFavoriteHandler = async (
+    newName,
+    url,
+    nickname,
+    addTime,
+    id,
+    editTime
+  ) => {
+    try {
+      let response = await fetch(
+        `https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon/${id}/.json`,
+        {
+          method: "PATCH",
+          header: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            name: newName,
+            url: url,
+            nickname: (nickname = null),
+            addTime: addTime,
+            id: id,
+            editTime: editTime,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "something went wrong when editing data to the database"
+        );
+      }
+
+      fetchFavoriteData();
+    } catch (e) {
+      console.log(e);
+    }
+
+    console.log(id);
+    console.log(newName);
+    console.log(editTime);
   };
 
   useEffect(() => {
@@ -237,6 +280,7 @@ function App() {
                   favorites={favoritePokemon}
                   setFavorites={setFavoritePokemon}
                   onDelete={onDeleteFavoriteHandler}
+                  onEdit={onEditFavoriteHandler}
                 />
               }
             />
