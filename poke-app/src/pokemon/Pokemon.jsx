@@ -5,8 +5,6 @@ const Pokemon = (props) => {
   const [sprite, setSprite] = useState([]);
   const [Id, setId] = useState([]);
   const [Types, setTypes] = useState([]);
-  const [isFavorite, setIsFavorite] = useState([]);
-  const [colorStyles, setColorStyles] = useState([])
 
   let id = ''
 
@@ -41,7 +39,6 @@ const Pokemon = (props) => {
       data.types.forEach(item => {
         arr.push(item.type.name)
       })
-      setColorStyles(arr)
       
     } catch (e) {
       console.log(e);

@@ -2,7 +2,7 @@ import styles from "./Navbar.module.css";
 import Logo from "../assets/img/pokeball.svg";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
   const location = useLocation()

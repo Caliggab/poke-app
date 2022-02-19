@@ -15,7 +15,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [isFiltering, setIsFiltering] = useState(false);
   const [AllPokemon, setAllPokemon] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [favoritePokemon, setFavoritePokemon] = useState([]);
 
@@ -162,7 +162,6 @@ function App() {
         );
       }
 
-      let data = await response.json();
 
       fetchFavoriteData();
     } catch (e) {
