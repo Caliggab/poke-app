@@ -8,6 +8,7 @@ const Favorites = (props) => {
 
   let favorite = props.favorites;
 
+
   let pokemons = favorite.map((item) => (
     <div className={styles.favoriteContainer}>
       <Pokemon
@@ -20,7 +21,7 @@ const Favorites = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.infoItem}>Add Date: {item.addTime}</div>
         <div className={styles.infoItem}>Last Modified:</div>
-        <button>Delete</button>
+        <button onClick={() => {props.onDelete(item.id)}}>Delete</button>
       </div>
     </div>
   ));

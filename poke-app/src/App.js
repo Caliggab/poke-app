@@ -114,7 +114,8 @@ function App() {
           name: data[item].name,
           url: data[item].url,
           nickname: data[item].nickname,
-          addTime: data[item].addTime
+          addTime: data[item].addTime,
+          id: item,
         });
       }
 
@@ -136,7 +137,6 @@ function App() {
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let dateTime = date + " " + time;
 
-
     try {
       let response = await fetch(
         "https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon.json",
@@ -147,7 +147,8 @@ function App() {
             name: name,
             url: url,
             nickname: (nickname = null),
-            addTime: dateTime
+            addTime: dateTime,
+            id: Math.random(),
           }),
         }
       );
@@ -159,6 +160,8 @@ function App() {
       }
 
       let data = await response.json();
+
+      fetchFavoriteData();
     } catch (e) {
       console.log(e);
     }
@@ -179,13 +182,26 @@ function App() {
     addFavoriteData(name, url);
   };
 
-  // const onDeleteFavoriteHandler = async() => {
-  //   try {
+  const onDeleteFavoriteHandler = async (id) => {
+    console.log(id)
+    try {
+      let response = await fetch(
+        `https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon/${id}/.json`,
+        {
+          method: "DELETE",
+        }
+      );
 
-  //   } catch (e) {
-      
-  //   }
-  // }
+      if (!response.ok) {
+        throw new Error(
+          "something went wrong when deleting data to the database"
+        );
+      }
+      fetchFavoriteData();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     fetchPokeData();
@@ -220,6 +236,7 @@ function App() {
                 <Favorites
                   favorites={favoritePokemon}
                   setFavorites={setFavoritePokemon}
+                  onDelete={onDeleteFavoriteHandler}
                 />
               }
             />

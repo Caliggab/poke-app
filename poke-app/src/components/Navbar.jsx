@@ -2,8 +2,13 @@ import styles from "./Navbar.module.css";
 import Logo from "../assets/img/pokeball.svg";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
+  const location = useLocation()
+  let currentUrl = location.pathname
+  console.log(currentUrl)
+
   const toggleStateHandler = () => {
     props.toggle();
   };
@@ -32,7 +37,7 @@ const Navbar = (props) => {
         </ul>
       </div>
       <div className={styles.item}>
-        <SearchBar search={props.search} />
+        {currentUrl === '/favorites' ? '' : <SearchBar search={props.search} />}
       </div>
     </div>
   );
