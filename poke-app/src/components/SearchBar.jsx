@@ -9,7 +9,7 @@ const SearchBar = (props) => {
   let handleSubmit = (event) => {
     event.preventDefault()
 
-    let searchTerm = enteredText.current.value
+    let searchTerm = enteredText.current.value.toLowerCase()
     if (searchTerm.length < 2) {
       setIsInvalid(true)
       return
