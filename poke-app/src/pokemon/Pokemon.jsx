@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./Pokemon.module.css";
+import FullHeart from "../assets/img/full-heart.png";
+import EmptyHeart from "../assets/img/empty-heart.png";
 
 const Pokemon = (props) => {
   const [sprite, setSprite] = useState([]);
   const [Id, setId] = useState([]);
   const [Types, setTypes] = useState([]);
 
-  let id = ''
+  let id = "";
 
-  props.favorites.forEach(item => {
+  props.favorites.forEach((item) => {
     if (item.name === props.name) {
-      id = item.id
+      id = item.id;
     }
-  })
-  
-  
+  });
 
   const fetchIndividualPokemonData = useCallback(async () => {
     try {
@@ -33,13 +33,11 @@ const Pokemon = (props) => {
 
       setTypes(data.types);
 
-      let arr = []
-      
+      let arr = [];
 
-      data.types.forEach(item => {
-        arr.push(item.type.name)
-      })
-      
+      data.types.forEach((item) => {
+        arr.push(item.type.name);
+      });
     } catch (e) {
       console.log(e);
     }
@@ -62,21 +60,21 @@ const Pokemon = (props) => {
   ));
 
   const onToggleFavoriteHandler = () => {
-    console.log(id)
+    console.log(id);
     props.addFav(props.name, props.url, id);
   };
 
   const name = props.name.charAt(0).toUpperCase() + props.name.slice(1);
 
-  console.log(parsedTypes)
+  console.log(parsedTypes);
 
-  let styleColor = parsedTypes[0]
-
-
-
+  let styleColor = parsedTypes[0];
 
   return (
-    <div className={` ${styles.pokecard} ${styles[styleColor]}`} onClick={onToggleFavoriteHandler}>
+    <div
+      className={` ${styles.pokecard} ${styles[styleColor]}`}
+      onClick={onToggleFavoriteHandler}
+    >
       <div className={styles.image}>
         <img src={sprite} alt="pokesprite"></img>
       </div>
@@ -85,7 +83,13 @@ const Pokemon = (props) => {
           <div className={styles.name}>{name}</div>
           <div>#{Id}</div>
         </div>
-        <div className={styles.heartContainer}>{isInFavorites ? '♥️' : '♡'}</div>
+        <div className={styles.heartContainer}>
+          {isInFavorites ? (
+            <img src={FullHeart} alt="fullheart"></img>
+          ) : (
+            <img src={EmptyHeart} alt="emptyheart"></img>
+          )}
+        </div>
       </div>
       <div className={styles.typeContainer}>{finalTypes}</div>
     </div>

@@ -12,121 +12,129 @@
   transition: all 0.3s;
 }
 
-.pokecard:hover{
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
-    cursor: pointer;
-    transform: scale(1.1);
+.pokecard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-image:hover{
-    border: red 1px solid;
+image:hover {
+  border: red 1px solid;
 }
 
 .typeBox {
-    padding: 0.2em 1em;
-    
-    margin-bottom: 0.3em;
-    background-color: rgba(255, 255, 255, 0.432);
-    border-radius: 5px;
-    color: rgb(0, 0, 0);
-    font-weight: 700;
-    width:70%;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
+  padding: 0.2em 1em;
+
+  margin-bottom: 0.3em;
+  background-color: rgba(255, 255, 255, 0.432);
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
 }
 
-.typeContainer{
-    display: flex;
-    flex-direction: column;
+.typeContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .nameContainer {
-    margin-top: 0.2em;
-    font-weight: 500;
+  margin-top: 0.2em;
+  font-weight: 500;
 }
 
-.name{
-    font-weight: 700;
-    font-size: 1.2em;
+.name {
+  font-weight: 700;
+  font-size: 1.2em;
 }
 
 .heartContainer {
-    font-size: 1.7em;
-    color: red;
+  font-size: 1.7em;
+  color: red;
+  margin:3px;
+}
+.heartContainer img {
+  height: 1em;
+  width: 1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  padding: 0.1em;
+  background: white;
 }
 
-
 .steel {
-	background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 .fire {
-	background-color: #fddfdf;
+  background-color: #fddfdf;
 }
 
 .grass {
-	background-color: #defde0;
+  background-color: #defde0;
 }
 
 .electric {
-	background-color: #fcf7de;
+  background-color: #fcf7de;
 }
 
 .water,
 .ice {
-	background-color: #def3fd;
+  background-color: #def3fd;
 }
 
 .ground {
-	background-color: #f4e7da;
+  background-color: #f4e7da;
 }
 
 .rock {
-	background-color: #d5d5d4;
+  background-color: #d5d5d4;
 }
 
 .fairy {
-	background-color: #fceaff;
+  background-color: #fceaff;
 }
 
 .poison {
-	background-color: #98d7a582;
+  background-color: #98d7a582;
 }
 
 .bug {
-	background-color: #f8d5a3;
+  background-color: #f8d5a3;
 }
 
 .dragon {
-	background-color: #97b3e6;
+  background-color: #97b3e6;
 }
 
 .psychic {
-	background-color: #eaeda1;
+  background-color: #eaeda1;
 }
 
 .flying {
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .fighting {
-	background-color: #e6e0d4;
+  background-color: #e6e0d4;
 }
 
 .normal {
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .card:hover {
-	animation: bounce 0.5s linear;
+  animation: bounce 0.5s linear;
 }
 
 @media (max-width: 350px) {
-    .pokecard {
-      flex-direction: column;
-      height: auto;
-      margin: auto;
-      width: 85%;
-    }
+  .pokecard {
+    flex-direction: column;
+    height: auto;
+    margin: auto;
+    width: 85%;
   }
+}

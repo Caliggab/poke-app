@@ -66,7 +66,7 @@ const Favorites = (props) => {
 
   return (
     <div>
-      <div className={styles.title}> ♥️ Your Favorite Pokemon! ♥️</div>
+      <div className={styles.title}> Your Favorite Pokemon! </div>
       {favorite.length === 0 ? (
         <div> 🙁 You currently don't have any favorites 🙁</div>
       ) : (
