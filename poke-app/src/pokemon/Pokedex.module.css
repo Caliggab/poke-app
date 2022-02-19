@@ -6,15 +6,31 @@
   grid-gap: 1rem;
 }
 
-.bar{
+.bar {
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 0 auto;
   padding: 1rem 6rem;
   height: 3rem;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.title {
+    font-size: 2rem;
+}
+
+.counter {
+  color: rgb(255, 255, 255);
+  background-color: rgb(2, 65, 0);
+  text-align: center;
+  border-radius: 10px;
+  padding: 0;
+  width: 2rem;
+  margin: 0 auto;
+}
 
 @media (min-width: 600px) {
   .pokedexGrid {

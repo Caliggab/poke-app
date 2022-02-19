@@ -253,7 +253,7 @@ function App() {
   }, [fetchPokeData, fetchAllPokemon, fetchFavoriteData]);
 
   let homePageElement = !isFiltering ? (
-    <Pokedex setPage={setPage} page={page} addFav={addFavoriteHandler} />
+    <Pokedex setPage={setPage} page={page} addFav={addFavoriteHandler} favorites={favoritePokemon}/>
   ) : (
     <FilteredPokemon
       searchTerm={searchTerm}

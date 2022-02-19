@@ -15,6 +15,11 @@ const Pokedex = (props) => {
     <div>
       <div className={styles.bar}>
         <Pagination page={props.page} setPage={props.setPage} />
+        <div className={styles.title}>- Gabriel's Pokedex -</div>
+        <div>
+        <div className={styles.item}>No. of Favorites: </div>
+          <div className={styles.counter}>{props.favorites.length}</div>
+        </div>
       </div>
       <div className={styles.pokedexGrid}>{pokemons}</div>
     </div>
