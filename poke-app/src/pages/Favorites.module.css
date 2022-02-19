@@ -28,6 +28,8 @@
   .favoriteContainer {
       display: flex;
       gap: 1em;
+      width:70vw;
+      margin: 0 auto;
   }
   
   .infoContainer {

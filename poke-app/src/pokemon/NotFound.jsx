@@ -8,7 +8,7 @@ const NotFound = () => {
 			<h3>404! 😭 Not Found!</h3>
 			<img src={Poke} alt="404 Not Found" className={styles.image}/>
 			<p>
-				The Pokemon you were looking for was not found{" "}
+				The Pokemons you were looking for were not found{" "}
 				<span role="img" aria-label="smile">
 					😭
 				</span>

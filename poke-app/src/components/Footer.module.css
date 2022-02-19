@@ -1,5 +1,13 @@
 .footer {
-    margin: 3em auto;
-    text-align: center;
-    font-size: 2rem;
+  margin: 3em auto;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.link {
+  text-decoration: none;
 }

@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Favorites from "./pages/Favorites";
 import FilteredPokemon from "./pokemon/FilteredPokemon";
+import NotFound from "./pokemon/NotFound";
 import Pokedex from "./pokemon/Pokedex";
 
 export const PokedexContext = React.createContext();
@@ -270,7 +271,7 @@ function App() {
         <Header search={searchHandler} toggle={toggleStateHandler} />
         <div className="App">
           <Routes>
-            App
+          <Route path='*' element={<NotFound />} /> 
             <Route path="/" element={homePageElement} />
             <Route path="/filter" element={homePageElement} />
             <Route
