@@ -7,7 +7,6 @@ import { useHistory, useLocation } from "react-router-dom";
 const Navbar = (props) => {
   const location = useLocation()
   let currentUrl = location.pathname
-  console.log(currentUrl)
 
   const toggleStateHandler = () => {
     props.toggle();

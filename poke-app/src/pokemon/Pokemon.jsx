@@ -5,6 +5,16 @@ const Pokemon = (props) => {
   const [sprite, setSprite] = useState([]);
   const [Id, setId] = useState([]);
   const [Types, setTypes] = useState([]);
+  const [isFavorite, setIsFavorite] = useState([]);
+
+  let id = ''
+
+  props.favorites.forEach(item => {
+    if (item.name === props.name) {
+      id = item.id
+    }
+  })
+  
 
   const fetchIndividualPokemonData = useCallback(async () => {
     try {
@@ -21,17 +31,21 @@ const Pokemon = (props) => {
       setSprite(data.sprites.front_default);
       setId(data.id);
 
-      //types
-
       setTypes(data.types);
     } catch (e) {
       console.log(e);
     }
-  },[props.url]);
+  }, [props.url]);
 
   useEffect(() => {
     fetchIndividualPokemonData();
   }, [fetchIndividualPokemonData]);
+
+  let isInFavorites = false;
+  if (props.favorites.filter((item) => item.url === props.url).length > 0) {
+    // setIsFavorite(true)
+    isInFavorites = true;
+  }
 
   let parsedTypes = [];
   Types.map((item) => parsedTypes.push(item.type.name));
@@ -40,8 +54,11 @@ const Pokemon = (props) => {
   ));
 
   const onToggleFavoriteHandler = () => {
-    props.addFav(props.name, props.url)
-  }
+    console.log(id)
+    props.addFav(props.name, props.url, id);
+  };
+
+
 
   return (
     <div className={styles.pokecard} onClick={onToggleFavoriteHandler}>
@@ -53,7 +70,7 @@ const Pokemon = (props) => {
           {props.name}
           <div>#{Id}</div>
         </div>
-        <div className={styles.heartContainer}>♡</div>
+        <div className={styles.heartContainer}>{isInFavorites ? '♥️' : '♡'}</div>
       </div>
       <div className={styles.typeContainer}>{finalTypes}</div>
     </div>

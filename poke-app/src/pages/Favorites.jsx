@@ -20,6 +20,7 @@ const Favorites = (props) => {
         url={item.url}
         key={item.name}
         addFav={props.addFav}
+        favorites={props.favorites}
       />
 
       <div className={styles.infoContainer}>

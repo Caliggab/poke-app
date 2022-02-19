@@ -3,12 +3,16 @@ import styles from "./FilteredPokemon.module.css";
 import NotFound from "./NotFound";
 
 const FilteredPokemon = (props) => {
-
   let list = props.filteredPokemon;
 
-
   let pokemons = list.map((item) => (
-    <Pokemon name={item.name} url={item.url} key={item.name} addFav={props.addFav}/>
+    <Pokemon
+      name={item.name}
+      url={item.url}
+      key={item.name}
+      addFav={props.addFav}
+      favorites={props.favorites}
+    />
   ));
 
   //   setFilteredPokeList(list);
@@ -39,8 +43,13 @@ const FilteredPokemon = (props) => {
   //     }
   //   };
 
-    let component = list.length === 0 ? <NotFound /> : <div className={styles.pokedexGrid}>{pokemons}</div>
-    
+  let component =
+    list.length === 0 ? (
+      <NotFound />
+    ) : (
+      <div className={styles.pokedexGrid}>{pokemons}</div>
+    );
+
   return (
     <div>
       <div>{props.searchTerm}</div>

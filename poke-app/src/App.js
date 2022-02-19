@@ -170,7 +170,13 @@ function App() {
     }
   };
 
-  const addFavoriteHandler = (name, url) => {
+
+  const addFavoriteHandler = (name, url, id) => {
+    if (favoritePokemon.filter(item => item.name === name).length > 0) {
+      onDeleteFavoriteHandler(id)
+      return
+    }
+
     let filterFavorites = favoritePokemon.filter(
       (item, index) => item.name === name
     );
@@ -259,11 +265,11 @@ function App() {
     <FilteredPokemon
       searchTerm={searchTerm}
       filteredPokemon={filteredPokemon}
-      addFav={addFavoriteHandler}
+        addFav={addFavoriteHandler}
+        favorites={favoritePokemon}
     />
   );
 
-  console.log(favoritePokemon);
 
   return (
     <div>
