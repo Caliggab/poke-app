@@ -7,7 +7,7 @@ This project was made with Create React App and pure CSS front-end design. It co
 
 See the project live! https://poke-app-phi.vercel.app/
 
-##Functionality: 
+## Functionality: 
 
 -Display Pokemons with their basic information including type and number
 -Pagination in order to reduce number of requests
@@ -19,7 +19,7 @@ See the project live! https://poke-app-phi.vercel.app/
 -Basic input validation logic for searching and editing.
 -Context management using contextAPI.
 
-##Technologies:
+## Technologies:
 
 -React.js
 -React Router
