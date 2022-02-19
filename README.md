@@ -2,7 +2,7 @@
 
 Made by Gabriel Arriaza.
 
-##Project Info
+## Project Info
 This project was made with Create React App and pure CSS front-end design. It consumes the poke-Api and also includes back-end functionality using Firebase.
 
 See the project live! https://poke-app-phi.vercel.app/
