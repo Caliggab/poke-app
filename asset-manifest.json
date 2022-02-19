@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f2e3a2af.css",
+    "main.js": "/static/js/main.aee535f2.js",
+    "static/media/avatar.svg": "/static/media/avatar.445548c19c7f51bd5c062bbfc8152c1d.svg",
+    "static/media/pokeball.svg": "/static/media/pokeball.e57f7ae634ea599f04f057a700d4bbe2.svg",
+    "index.html": "/index.html",
+    "main.f2e3a2af.css.map": "/static/css/main.f2e3a2af.css.map",
+    "main.aee535f2.js.map": "/static/js/main.aee535f2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2e3a2af.css",
+    "static/js/main.aee535f2.js"
+  ]
+}
