@@ -9,7 +9,13 @@
   padding: 1rem;
   height: 5rem;
   width: 90%;
-  
+  transition: all 0.3s;
+}
+
+.pokecard:hover{
+    background: rgb(232, 255, 224);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+    cursor: pointer;
 }
 
 image:hover{

@@ -39,8 +39,12 @@ const Pokemon = (props) => {
     <div className={styles.typeBox}>{item} </div>
   ));
 
+  const onToggleFavoriteHandler = () => {
+    props.addFav(props.name, props.url)
+  }
+
   return (
-    <div className={styles.pokecard}>
+    <div className={styles.pokecard} onClick={onToggleFavoriteHandler}>
       <div className={styles.image}>
         <img src={sprite} alt="pokesprite"></img>
       </div>

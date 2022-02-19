@@ -1,4 +1,5 @@
 .footer {
-    margin-top: 3em;
+    margin: 3em auto;
     text-align: center;
+    font-size: 2rem;
 }

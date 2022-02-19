@@ -4,15 +4,14 @@ import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-
   const toggleStateHandler = () => {
-    props.toggle()
-  }
+    props.toggle();
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-        <Link to="/" className={styles.listItem}>
+        <Link to="/" className={styles.listItem} onClick={toggleStateHandler}>
           <img
             src={Logo}
             alt="pokeball"
@@ -33,7 +32,7 @@ const Navbar = (props) => {
         </ul>
       </div>
       <div className={styles.item}>
-        <SearchBar search={props.search}/>
+        <SearchBar search={props.search} />
       </div>
     </div>
   );

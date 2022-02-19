@@ -1,16 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
 import Pokemon from "./Pokemon";
 import styles from "./FilteredPokemon.module.css";
+import NotFound from "./NotFound";
 
 const FilteredPokemon = (props) => {
-  const [filteredPokeList, setFilteredPokeList] = useState([]);
 
   let list = props.filteredPokemon;
 
-  console.log(list);
 
   let pokemons = list.map((item) => (
-    <Pokemon name={item.name} url={item.url} key={item.name} />
+    <Pokemon name={item.name} url={item.url} key={item.name} addFav={props.addFav}/>
   ));
 
   //   setFilteredPokeList(list);
@@ -41,10 +39,12 @@ const FilteredPokemon = (props) => {
   //     }
   //   };
 
+    let component = list.length === 0 ? <NotFound /> : <div className={styles.pokedexGrid}>{pokemons}</div>
+    
   return (
     <div>
       <div>{props.searchTerm}</div>
-      <div className={styles.pokedexGrid}>{pokemons}</div>
+      {component}
     </div>
   );
 };

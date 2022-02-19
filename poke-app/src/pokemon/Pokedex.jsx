@@ -9,7 +9,7 @@ const Pokedex = (props) => {
   const pokemon = useContext(PokedexContext);
 
     let pokemons = pokemon.map((item) => (
-    <Pokemon name={item.name} url={item.url} key={item.name} />
+    <Pokemon name={item.name} url={item.url} key={item.name} addFav={props.addFav} />
   ));
   return (
     <div>

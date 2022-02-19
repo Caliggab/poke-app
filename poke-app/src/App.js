@@ -15,7 +15,8 @@ function App() {
   const [isFiltering, setIsFiltering] = useState(false);
   const [AllPokemon, setAllPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPokemon, setFilteredPokemon] = useState([])
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const [favoritePokemon, setFavoritePokemon] = useState([]);
 
   const fetchPokeData = useCallback(async () => {
     let url = "";
@@ -50,10 +51,6 @@ function App() {
     }
   }, [page]);
 
-  useEffect(() => {
-    fetchPokeData();
-  }, [fetchPokeData]);
-
   const fetchAllPokemon = useCallback(async () => {
     try {
       let response = await fetch(
@@ -64,55 +61,168 @@ function App() {
         throw new Error("something went wrong when fetching ALL pokemon");
       }
 
-        let data = await response.json();
-        
+      let data = await response.json();
 
       let allPokemonList = data.results;
       // let nameList = allPokemonList.map(item => item.name)
       setAllPokemon(allPokemonList);
 
-        
-        // let filteredList = nameList.filter(item => item.includes(searchTerm))
-      
-
+      // let filteredList = nameList.filter(item => item.includes(searchTerm))
     } catch (e) {
       console.log(e);
     }
-  }, []);  
+  }, []);
 
-
-  useEffect(() => {
-    fetchAllPokemon();
-  }, [fetchAllPokemon]);
-
-  
+  // useEffect(() => {
+  //   fetchAllPokemon();
+  // }, [fetchAllPokemon]); c
 
   const searchHandler = (searchTerm) => {
-    setIsFiltering(true)
-    let filteredList = AllPokemon.filter(item => item.name.includes(searchTerm))
-    setFilteredPokemon(filteredList)
+    setIsFiltering(true);
+    let filteredList = AllPokemon.filter((item) =>
+      item.name.includes(searchTerm)
+    );
+    setFilteredPokemon(filteredList);
+    // setPokemon(filteredList)
   };
 
-  const toggleStateHandler = () => {
-   setIsFiltering(false)
- }
+  const toggleStateHandler = (event) => {
+    setIsFiltering(!isFiltering);
+    if (isFiltering) {
+      fetchPokeData();
+    }
+  };
+
+  const fetchFavoriteData = useCallback(async () => {
+    try {
+      let response = await fetch(
+        "https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon.json"
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "something went wrong when fetching data from the database"
+        );
+      }
+
+      let data = await response.json();
+
+      let favoriteData = [];
+
+      for (let item in data) {
+        favoriteData.push({
+          name: data[item].name,
+          url: data[item].url,
+          nickname: data[item].nickname,
+          addTime: data[item].addTime
+        });
+      }
+
+      setFavoritePokemon(favoriteData);
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+  const addFavoriteData = async (name, url, nickname) => {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date + " " + time;
+
+
+    try {
+      let response = await fetch(
+        "https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon.json",
+        {
+          method: "POST",
+          header: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            name: name,
+            url: url,
+            nickname: (nickname = null),
+            addTime: dateTime
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "something went wrong when adding data to the database"
+        );
+      }
+
+      let data = await response.json();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const addFavoriteHandler = (name, url) => {
+    let filterFavorites = favoritePokemon.filter(
+      (item, index) => item.name === name
+    );
+    if (filterFavorites.length > 0) {
+      return;
+    }
+    setFavoritePokemon([
+      ...favoritePokemon,
+      { name: name, url: url, nickname: null },
+    ]);
+    //database
+    addFavoriteData(name, url);
+  };
+
+  // const onDeleteFavoriteHandler = async() => {
+  //   try {
+
+  //   } catch (e) {
+      
+  //   }
+  // }
+
+  useEffect(() => {
+    fetchPokeData();
+    fetchAllPokemon();
+    fetchFavoriteData();
+  }, [fetchPokeData, fetchAllPokemon, fetchFavoriteData]);
 
   let homePageElement = !isFiltering ? (
-    <Pokedex setPage={setPage} page={page} />
+    <Pokedex setPage={setPage} page={page} addFav={addFavoriteHandler} />
   ) : (
-    <FilteredPokemon searchTerm={searchTerm} filteredPokemon={filteredPokemon} />
+    <FilteredPokemon
+      searchTerm={searchTerm}
+      filteredPokemon={filteredPokemon}
+      addFav={addFavoriteHandler}
+    />
   );
 
+  console.log(favoritePokemon);
 
   return (
     <div>
       <PokedexContext.Provider value={pokemon}>
-        <Header search={searchHandler} toggle={toggleStateHandler}/>
+        <Header search={searchHandler} toggle={toggleStateHandler} />
         <div className="App">
           <Routes>
             App
             <Route path="/" element={homePageElement} />
-            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/filter" element={homePageElement} />
+            <Route
+              path="/favorites"
+              element={
+                <Favorites
+                  favorites={favoritePokemon}
+                  setFavorites={setFavoritePokemon}
+                />
+              }
+            />
           </Routes>
         </div>
         <Footer />

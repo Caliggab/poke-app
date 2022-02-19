@@ -1,7 +1,7 @@
 
 import { useRef, useState } from 'react';
 import styles from './Searchbar.module.css'
-
+import { useHistory } from "react-router-dom"
 
 const SearchBar = (props) => {
   const [isInvalid, setIsInvalid] = useState(false)
@@ -19,6 +19,7 @@ const SearchBar = (props) => {
     props.search(searchTerm)
 
     enteredText.current.value = ''
+    
   } 
 
   return (
@@ -26,7 +27,7 @@ const SearchBar = (props) => {
       <div className={styles.search}>
         <input
           type="text"
-          placeholder="filter pokemon!"
+          placeholder="Filter pokemon!"
           ref={enteredText}
         />
         <button type="submit" onClick={handleSubmit} className={styles.button}>
