@@ -24,13 +24,16 @@ const Pokedex = (props) => {
         <div className={styles.paginationContainer}>
         <Pagination page={props.page} setPage={props.setPage} />
         </div>
-        <div className={styles.title}>Gabriel's Pokedex</div>
+        <div className={styles.title}>Gabriel's Pokédex</div>
         <div className={styles.favoriteContainer}>
           <div className={styles.item}>No. of Favorites: </div>
           <div className={styles.counter}> <span className={styles.heart}> ♥️ </span> {props.favorites.length}</div>
         </div>
       </div>
       <div className={styles.pokedexGrid}>{pokemons}</div>
+      <div className={styles.paginationContainer}>
+        <Pagination page={props.page} setPage={props.setPage} />
+        </div>
     </div>
   );
 };
