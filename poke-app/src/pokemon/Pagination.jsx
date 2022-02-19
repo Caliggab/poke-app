@@ -3,14 +3,24 @@ import styles from './Pagination.module.css'
 const Pagination = (props) => {
     let page = props.page
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     const pageChangeAdd = () => {
         let newPage = page+1
         props.setPage(newPage)
+        scrollToTop()
     }
 
     const pageChangeDecrease = () => {
         let newPage = page-1
         props.setPage(newPage)
+        scrollToTop()
+
 }
 
     return <div className={styles.PaginationContainer}>
