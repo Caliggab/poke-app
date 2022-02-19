@@ -1,0 +1,8 @@
+.PaginationContainer {
+  align-self: start;
+  
+}
+
+.PaginationContainer > button {
+    font-size: 1.2rem;
+}

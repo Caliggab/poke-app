@@ -1,0 +1,29 @@
+.pokedexGrid {
+  padding-top: 3rem;
+  max-width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.bar{
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 0 auto;
+  padding: 1rem 6rem;
+  height: 3rem;
+  display: flex;
+}
+
+
+@media (min-width: 600px) {
+  .pokedexGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .pokedexGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

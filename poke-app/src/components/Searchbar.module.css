@@ -1,0 +1,26 @@
+.search {
+  height: 2em;
+  width: 30vw;
+  height: 2em;
+
+}
+
+.button {
+  padding: 3px 5px;
+}
+
+input {
+  width: 50%;
+  height: 1.45em;
+  margin-top: -10px;
+}
+
+.error {
+  color: rgb(139, 0, 0);
+  font-weight: 600;
+  font-size: 1rem;
+  padding:1em;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+}
