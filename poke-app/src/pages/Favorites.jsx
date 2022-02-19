@@ -25,7 +25,7 @@ const Favorites = (props) => {
 
       <div className={styles.infoContainer}>
         <div className={styles.infoItem}>Add Date: {item.addTime}</div>
-        <div className={styles.infoItem}>Last Modified:{item.editTime}</div>
+        {item.editTime ? <div className={styles.infoItem}>Last Modified:{item.editTime}</div> : ''}
         <div className={styles.buttonGroup}>
           {!isEditing ? (
             <div>

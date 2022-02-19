@@ -1,7 +1,6 @@
 
 import { useRef, useState } from 'react';
 import styles from './Searchbar.module.css'
-import { useHistory } from "react-router-dom"
 
 const SearchBar = (props) => {
   const [isInvalid, setIsInvalid] = useState(false)

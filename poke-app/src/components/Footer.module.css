@@ -11,3 +11,13 @@
 .link {
   text-decoration: none;
 }
+
+@media (max-width: 350px) {
+  .footer {
+    font-size: 1em;
+    margin: 3em 2em;
+  }
+  .logo{
+    margin-top: 1em;
+  }
+}

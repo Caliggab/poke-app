@@ -35,7 +35,7 @@ const Navbar = (props) => {
           </Link>
         </ul>
       </div>
-      <div className={styles.item}>
+      <div className={styles.search}>
         {currentUrl === '/favorites' ? '' : <SearchBar search={props.search} />}
       </div>
     </div>

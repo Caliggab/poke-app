@@ -178,7 +178,7 @@ function App() {
     }
 
     let filterFavorites = favoritePokemon.filter(
-      (item, index) => item.name === name
+      (item, index) => item.url === url
     );
     if (filterFavorites.length > 0) {
       return;

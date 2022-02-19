@@ -7,9 +7,8 @@ img {
   transition: all 0.3s;
 } */
 
-
 .container {
-  height: 100px;
+  height: 10em;
   padding: 0px 100px;
   background-color: rgb(19, 31, 0);
   display: flex;
@@ -57,3 +56,30 @@ img {
   height: 50px;
 }
 
+@media (max-width: 750px) {
+  .container {
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: auto;
+    flex-direction: column;
+  }
+  .list {
+    flex-direction: column;
+  }
+  .listItem {
+    font-size: 1em;
+    margin: 0.5em;
+  }
+  .search {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    padding:0;
+  }
+}

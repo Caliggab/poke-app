@@ -6,6 +6,7 @@ const Pokemon = (props) => {
   const [Id, setId] = useState([]);
   const [Types, setTypes] = useState([]);
   const [isFavorite, setIsFavorite] = useState([]);
+  const [colorStyles, setColorStyles] = useState([])
 
   let id = ''
 
@@ -14,6 +15,7 @@ const Pokemon = (props) => {
       id = item.id
     }
   })
+  
   
 
   const fetchIndividualPokemonData = useCallback(async () => {
@@ -32,6 +34,15 @@ const Pokemon = (props) => {
       setId(data.id);
 
       setTypes(data.types);
+
+      let arr = []
+      
+
+      data.types.forEach(item => {
+        arr.push(item.type.name)
+      })
+      setColorStyles(arr)
+      
     } catch (e) {
       console.log(e);
     }
@@ -58,16 +69,23 @@ const Pokemon = (props) => {
     props.addFav(props.name, props.url, id);
   };
 
+  const name = props.name.charAt(0).toUpperCase() + props.name.slice(1);
+
+  console.log(parsedTypes)
+
+  let styleColor = parsedTypes[0]
+
+
 
 
   return (
-    <div className={styles.pokecard} onClick={onToggleFavoriteHandler}>
+    <div className={` ${styles.pokecard} ${styles[styleColor]}`} onClick={onToggleFavoriteHandler}>
       <div className={styles.image}>
         <img src={sprite} alt="pokesprite"></img>
       </div>
       <div className={styles.middleContainer}>
         <div className={styles.nameContainer}>
-          {props.name}
+          <div className={styles.name}>{name}</div>
           <div>#{Id}</div>
         </div>
         <div className={styles.heartContainer}>{isInFavorites ? '♥️' : '♡'}</div>

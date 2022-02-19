@@ -11,7 +11,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 0 auto;
   padding: 1rem 8rem;
-  height: 3rem;
+  height: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -19,7 +19,7 @@
 }
 
 .title {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .counter {
@@ -27,8 +27,8 @@
   background-color: rgb(2, 65, 0);
   text-align: center;
   border-radius: 10px;
-  padding: 0;
-  width: 2rem;
+  padding: 0.3em;
+  min-width: 2rem;
   margin: 0 auto;
 }
 
@@ -38,8 +38,35 @@
   }
 }
 
+@media (max-width: 750px) {
+  .bar {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    flex-flow: column-reverse;
+    padding: 1rem 0;
+  }
+
+  .title {
+    padding: 0.5em 0;
+    order: 5;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .favoriteContainer {
+    margin-bottom: 0.5em;
+  }
+}
+
 @media (min-width: 900px) {
   .pokedexGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.heart {
+  color: red;
+}
+
+
