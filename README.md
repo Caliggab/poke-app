@@ -12,9 +12,12 @@ See the project live! https://poke-app-phi.vercel.app/
 - Display Pokemons with their basic information including type and number
 - Pagination in order to reduce number of requests
 - Filter-functionality to find pokemon
+- Detailed display of each pokemon on click on a modal interface
 - A 'Favorites' page in which you can add, delete and modify the nickname of a given pokemon
 - Favorites are stored in a Firebase real-time Database in order to conserve the saved pokemon
 - Navigation using react Router
+- Use of several react hooks such as useState, useRef and useEffect
+- Use of react-dom functionality with portals for modal diaplay
 - Custom 404 page
 - Basic input validation logic for searching and editing.
 - Context management using contextAPI.
