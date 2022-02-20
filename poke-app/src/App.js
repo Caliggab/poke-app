@@ -3,10 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Modal from "./layout/Modal";
 import Favorites from "./pages/Favorites";
 import FilteredPokemon from "./pokemon/FilteredPokemon";
 import NotFound from "./pokemon/NotFound";
 import Pokedex from "./pokemon/Pokedex";
+import PokemonModal from "./pokemon/PokemonModal";
 
 export const PokedexContext = React.createContext();
 
@@ -18,6 +20,8 @@ function App() {
   const [searchTerm] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [favoritePokemon, setFavoritePokemon] = useState([]);
+  const [isDisplayingModal, setIsDisplayingModal] = useState(false);
+  const [modalURL, setModalURL] = useState("");
 
   const fetchPokeData = useCallback(async () => {
     let url = "";
@@ -162,19 +166,21 @@ function App() {
         );
       }
 
-
       fetchFavoriteData();
     } catch (e) {
       console.log(e);
     }
   };
 
-
   const addFavoriteHandler = (name, url, id) => {
-    if (favoritePokemon.filter(item => item.name === name).length > 0) {
-      onDeleteFavoriteHandler(id)
-      return
-    }
+
+    console.log('onaddfavoritehandler is firin!')
+
+
+    // if (favoritePokemon.filter((item) => item.name === name).length > 0) {
+    //   onDeleteFavoriteHandler(id);
+    //   return;
+    // }
 
     let filterFavorites = favoritePokemon.filter(
       (item, index) => item.url === url
@@ -191,7 +197,7 @@ function App() {
   };
 
   const onDeleteFavoriteHandler = async (id) => {
-    console.log(id);
+    console.log('onDeletefavoritehandler is firin!')
     try {
       let response = await fetch(
         `https://pokeapp-706c7-default-rtdb.firebaseio.com/favoritepokemon/${id}/.json`,
@@ -252,6 +258,16 @@ function App() {
     console.log(editTime);
   };
 
+  const onToggleModal = () => {
+    setIsDisplayingModal(!isDisplayingModal);
+  };
+
+  const setModalURLHandler = (url) => {
+    console.log("set modal url!!");
+    console.log(url);
+    setModalURL(url);
+  };
+
   useEffect(() => {
     fetchPokeData();
     fetchAllPokemon();
@@ -259,24 +275,45 @@ function App() {
   }, [fetchPokeData, fetchAllPokemon, fetchFavoriteData]);
 
   let homePageElement = !isFiltering ? (
-    <Pokedex setPage={setPage} page={page} addFav={addFavoriteHandler} favorites={favoritePokemon}/>
+    <Pokedex
+      setPage={setPage}
+      page={page}
+      addFav={addFavoriteHandler}
+      favorites={favoritePokemon}
+      onToggleModal={onToggleModal}
+      setModalURL={setModalURLHandler}
+    />
   ) : (
     <FilteredPokemon
       searchTerm={searchTerm}
       filteredPokemon={filteredPokemon}
-        addFav={addFavoriteHandler}
-        favorites={favoritePokemon}
+      addFav={addFavoriteHandler}
+      favorites={favoritePokemon}
+      onToggleModal={onToggleModal}
+      setModalURL={setModalURLHandler}
     />
   );
-
 
   return (
     <div>
       <PokedexContext.Provider value={pokemon}>
         <Header search={searchHandler} toggle={toggleStateHandler} />
         <div className="App">
+          {isDisplayingModal ? (
+            <Modal toggleModal={onToggleModal}>
+              <PokemonModal
+                toggleModal={onToggleModal}
+                modalURL={modalURL}
+                addFav={addFavoriteHandler}
+                favorites={favoritePokemon}
+                key={Math.random()}
+              />{" "}
+            </Modal>
+          ) : (
+            ""
+          )}
           <Routes>
-          <Route path='*' element={<NotFound />} /> 
+            <Route path="*" element={<NotFound />} />
             <Route path="/" element={homePageElement} />
             <Route path="/filter" element={homePageElement} />
             <Route
@@ -287,6 +324,8 @@ function App() {
                   setFavorites={setFavoritePokemon}
                   onDelete={onDeleteFavoriteHandler}
                   onEdit={onEditFavoriteHandler}
+                  onToggleModal={onToggleModal}
+                  setModalURL={setModalURLHandler}
                 />
               }
             />

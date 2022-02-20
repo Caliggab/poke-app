@@ -21,6 +21,8 @@ const Favorites = (props) => {
         key={item.name}
         addFav={props.addFav}
         favorites={props.favorites}
+        onToggleModal={props.onToggleModal}
+        setModalURL={props.setModalURL}
       />
 
       <div className={styles.infoContainer}>

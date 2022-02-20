@@ -12,6 +12,8 @@ const FilteredPokemon = (props) => {
       key={item.name}
       addFav={props.addFav}
       favorites={props.favorites}
+      onToggleModal={props.onToggleModal}
+      setModalURL={props.setModalURL}
     />
   ));
 

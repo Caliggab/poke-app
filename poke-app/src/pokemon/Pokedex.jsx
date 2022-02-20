@@ -16,6 +16,8 @@ const Pokedex = (props) => {
       id={item.id}
       addFav={props.addFav}
       favorites={props.favorites}
+      onToggleModal={props.onToggleModal}
+      setModalURL={props.setModalURL}
     />
   ));
   return (
