@@ -94,7 +94,6 @@ const PokemonModal = (props) => {
     }
   });
 
-  console.log(props.favorites);
 
   const onToggleFavoriteHandler = () => {
     console.log(name);

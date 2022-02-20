@@ -26,7 +26,7 @@
 
 .image {
   margin-top: 1em;
-  min-width: 15rem;
+  min-width: 13rem;
 }
 
 .name {
@@ -96,6 +96,32 @@
 .height {
     margin-top: 1em;
 }
+
+@media (max-width: 650px) {
+  .image {
+    border: green 2px solid;
+    max-width: 60%;
+  }
+  .types {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 370px) {
+  .image {
+    border: red 2px solid;
+    width: 1rem;
+  }
+  .closeButton {
+    top: 10px;
+  left: 35px;
+  }
+  
+}
+
+
+
+
 
 .steel {
   background-color: #f4f4f4;
