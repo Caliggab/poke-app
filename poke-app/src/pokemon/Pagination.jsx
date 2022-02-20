@@ -25,8 +25,8 @@ const Pagination = (props) => {
 
     return <div className={styles.PaginationContainer}>
         <div>Page: {props.page} of 57</div>
-        {props.page === 1 ? '' : <button onClick={pageChangeDecrease}>⬅</button>}
-        {props.page === 57 ? '' : <button onClick={pageChangeAdd}>➡</button>}
+        {props.page === 1 ? '' : <button onClick={pageChangeDecrease}>&#60;</button>}
+        {props.page === 57 ? '' : <button onClick={pageChangeAdd}>&#62;</button>}
     </div>
 }
 
