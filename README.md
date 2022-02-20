@@ -17,7 +17,7 @@ See the project live! https://poke-app-phi.vercel.app/
 - Favorites are stored in a Firebase real-time Database in order to conserve the saved pokemon
 - Navigation using react Router
 - Use of several react hooks such as useState, useRef and useEffect
-- Use of react-dom functionality with portals for modal diaplay
+- Use of react-dom functionality with portals for modal display
 - Custom 404 page
 - Basic input validation logic for searching and editing.
 - Context management using contextAPI.
