@@ -8,13 +8,13 @@ const Pokemon = (props) => {
   const [Id, setId] = useState([]);
   const [Types, setTypes] = useState([]);
 
-  let id = "";
+  // let id = "";
 
-  props.favorites.forEach((item) => {
-    if (item.name === props.name) {
-      id = item.id;
-    }
-  });
+  // props.favorites.forEach((item) => {
+  //   if (item.name === props.name) {
+  //     id = item.id;
+  //   }
+  // });
 
   const fetchIndividualPokemonData = useCallback(async () => {
     try {
@@ -60,10 +60,10 @@ const Pokemon = (props) => {
   ));
 
 
-  const onToggleFavoriteHandler = () => {
-    console.log(id);
-    props.addFav(props.name, props.url, id);
-  };
+  // const onToggleFavoriteHandler = () => {
+  //   console.log(id);
+  //   props.addFav(props.name, props.url, id);
+  // };
 
   const onModalToggleHandler = () => {
     // console.log('modal')
